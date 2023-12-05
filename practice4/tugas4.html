@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Absensi Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            margin: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #daftarMahasiswa li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #daftarHadir li {
+            background-color: #c2f0c2;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p>NAMA : FELICIA SYAHDA VIVIA AUBERTA</p>
+    <p>NIM : 21102130</p>
+    <p>KELAS : MM4</p>
+    <br>
+    <h1>Absensi Mahasiswa</h1>
+    <p>Silakan klik tombol "Absen" untuk mencatat kehadiran mahasiswa.</p>
+    <ul id="daftarMahasiswa">
+        <li>Mahasiswa 1 <button onclick="absen(1)">Absen</button></li>
+        <li>Mahasiswa 2 <button onclick="absen(2)">Absen</button></li>
+        <li>Mahasiswa 3 <button onclick="absen(3)">Absen</button></li>
+    </ul>
+    <p>Daftar hadir:</p>
+    <ul id="daftarHadir"></ul>
+    
+    <script>
+        // Inisialisasi objek untuk menyimpan data hadir
+        const hadir = {};
+
+        // Fungsi untuk mencatat kehadiran
+        function absen(mahasiswaId) {
+            const namaMahasiswa = `Mahasiswa ${mahasiswaId}`;
+            if (!hadir[namaMahasiswa]) {
+                hadir[namaMahasiswa] = true;
+
+                // Tampilkan nama mahasiswa yang hadir pada halaman
+                const daftarHadir = document.getElementById('daftarHadir');
+                const listItem = document.createElement('li');
+                listItem.textContent = namaMahasiswa;
+                daftarHadir.appendChild(listItem);
+            } else {
+                alert(`${namaMahasiswa} sudah hadir.`);
+            }
+        }
+    </script>
+</body>
+</html>
